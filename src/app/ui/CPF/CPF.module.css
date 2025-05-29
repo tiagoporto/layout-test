@@ -1,7 +1,29 @@
-.hide {
-  transition: opacity 0.5s ease-in;
-  opacity: 0;
+@keyframes enterAnimation {
+  0% {
+    transform: translateX(-100%);
+
+    opacity: 0.5;
+  }
+  99% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-.visible {
+
+.wrapper {
+  background-color: steelblue;
+}
+
+.enter {
+  animation: enterAnimation 2s ease-in-out;
+  z-index: 1;
+}
+
+.content {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.show {
   opacity: 1;
 }

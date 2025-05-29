@@ -1,14 +1,15 @@
-.page {
+/* .page {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
-}
+} */
 
-.main {
-  position: absolute;
+.header {
+  position: relative;
   z-index: 2;
-  left: 50%;
+  text-align: center;
+  /* left: 50%; */
 }
 
 .button {
@@ -20,24 +21,18 @@
   background-color: burlywood;
 }
 
-@keyframes myAnimationLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.cpf {
-  background-color: green;
+.wrapper {
   top: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  /* padding-top: 300px; */
+}
+/*
+.cpf {
+  background-color: green;
+  height: 100vh;
+  overflow: auto;
 }
 
 .cpfActive {
@@ -45,9 +40,11 @@
   z-index: 1;
 }
 
-@keyframes myAnimationRight {
+@keyframes myAnimationLeft {
   0% {
+    transform: translateX(-100%);
     transform: translateX(100%);
+
     opacity: 0.5;
   }
   100% {
@@ -55,19 +52,4 @@
     opacity: 1;
   }
 }
-
-.cnpj {
-  background-color: pink;
-
-  transition: transform 0.5s ease-in-out;
-  top: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.cnpjActive {
-  animation: myAnimationRight 2s ease-in-out;
-  z-index: 1;
-}
+*/
