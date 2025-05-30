@@ -17,7 +17,6 @@ export const CNPJ = ({
 }: CNPJProps) => {
   return (
     <div
-      // className={`${styles.hide}  ${showContent && styles.visible}`}
       {...rest}
       className={`${removeDOM || styles.wrapper} ${className} ${
         enter && styles.enter

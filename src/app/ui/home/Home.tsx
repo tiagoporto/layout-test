@@ -11,14 +11,10 @@ import Link from "next/link";
 
 interface State {
   active: "cpf" | "cnpj" | undefined;
-  cpf: {
-    showContent?: boolean;
-    removeDom?: boolean;
-  };
-  cnpj: {
-    showContent?: boolean;
-    removeDom?: boolean;
-  };
+  cpfShowContent: boolean;
+  cpfRemoveDom?: boolean;
+  cnpjShowContent?: boolean;
+  cnpjRemoveDom?: boolean;
 }
 
 export const Home = () => {
@@ -31,16 +27,11 @@ export const Home = () => {
   // const [top, setTop] = useState(Number(queryString.get("top")));
   const [state, setState] = useState<State>({
     active: undefined,
-    cpf: {
-      showContent: true,
-      removeDom: pathname !== "/cnpj" ? false : true,
-    },
-    cnpj: {
-      showContent: true,
-      removeDom: pathname === "/cnpj" ? false : true,
-    },
+    cpfShowContent: pathname === "/cnpj" ? false : true,
+    cpfRemoveDom: pathname !== "/cnpj" ? false : true,
+    cnpjShowContent: pathname === "/cnpj" ? true : false,
+    cnpjRemoveDom: pathname === "/cnpj" ? false : true,
   });
-  console.log("state: ", state);
 
   // useEffect(() => {
   //   const current = pathname === "/cnpj" ? "cnpj" : "cpf";
@@ -82,13 +73,10 @@ export const Home = () => {
     //   setShowCNPJ(false);
     setState((prevState) => ({
       ...prevState,
-      cpf: {
-        showContent: true,
-      },
-      cnpj: {
-        removeDom: true,
-      },
+      // cpfShowContent: true,
+      // cnpjRemoveDom: true,
     }));
+
     router.push("/cpf");
   };
 
@@ -120,12 +108,8 @@ export const Home = () => {
     // setShowCNPJ(true);
     setState((prevState) => ({
       ...prevState,
-      cnpj: {
-        showContent: true,
-      },
-      cpf: {
-        removeDom: true,
-      },
+      // cnpjShowContent: true,
+      cpfRemoveDom: true,
     }));
     router.push("/cnpj");
   };
@@ -151,13 +135,9 @@ export const Home = () => {
             setState((prevState) => ({
               ...prevState,
               active: "cpf",
-              cpf: {
-                // showContent: false,
-                removeDom: false,
-              },
-              cnpj: {
-                removeDom: false,
-              },
+              cpfRemoveDom: false,
+              cpfShowContent: false,
+              cnpjRemoveDom: false,
             }));
 
             // router.push(
@@ -176,12 +156,9 @@ export const Home = () => {
             setState((prevState) => ({
               ...prevState,
               active: "cnpj",
-              cpf: {
-                removeDom: false,
-              },
-              cnpj: {
-                removeDom: false,
-              },
+              cpfRemoveDom: false,
+              cnpjRemoveDom: false,
+              cnpjShowContent: false,
             }));
             // router.push(
             //   "cnpj/?top=" + document.getElementsByTagName("body")[0].scrollTop
@@ -201,12 +178,12 @@ export const Home = () => {
       > */}
       <CPF
         enter={state.active === "cpf"}
-        showContent={!!state.cpf.showContent}
+        showContent={!!state.cpfShowContent}
         ref={refCpf}
         className={styles.wrapper}
         onAnimationStart={handleAnimationStartCPF}
         onAnimationEnd={handleAnimationEndCPJ}
-        removeDOM={!!state.cpf.removeDom}
+        removeDOM={!!state.cpfRemoveDom}
       ></CPF>
       {/* </div> */}
 
@@ -221,12 +198,12 @@ export const Home = () => {
       > */}
       <CNPJ
         enter={state.active === "cnpj"}
-        showContent={!!state.cnpj.showContent}
+        showContent={!!state.cnpjShowContent}
         ref={refCnpj}
         className={styles.wrapper}
         onAnimationStart={handleAnimationStartCNPJ}
         onAnimationEnd={handleAnimationEndCNPJ}
-        removeDOM={!!state.cnpj.removeDom}
+        removeDOM={!!state.cnpjRemoveDom}
       ></CNPJ>
       {/* </div>
     </div>*/}
