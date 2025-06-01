@@ -33,6 +33,6 @@
 }
 
 .show {
-  opacity: 0;
-  animation: fadeIn 5s forwards;
+  opacity: 1;
+  /* animation: fadeIn 5s forwards; */
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./Home.module.css";
 import { usePathname, useRouter } from "next/navigation";
@@ -32,11 +32,17 @@ export const Home = () => {
     cnpjShowContent: pathname === "/cnpj" ? true : false,
     cnpjRemoveDom: pathname === "/cnpj" ? false : true,
   });
+  console.log("state: ", state);
 
   // useEffect(() => {
   //   refCpf.current?.scrollTo({ top });
   //   refCnpj.current?.scrollTo({ top });
   // }, [top]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      pathname === "/cnpj" ? "salmon" : "steelblue";
+  }, [pathname]);
 
   // useEffect(() => {
   //   // refMain.current?.scrollTo({ top });
@@ -136,8 +142,8 @@ export const Home = () => {
               ...prevState,
               active: "cpf",
               cpfRemoveDom: false,
-              cpfShowContent: false,
-              cnpjShowContent: false,
+              // cpfShowContent: false,
+              // cnpjShowContent: true,
               cnpjRemoveDom: false,
             }));
 
@@ -158,9 +164,9 @@ export const Home = () => {
               ...prevState,
               active: "cnpj",
               cpfRemoveDom: false,
-              cpfShowContent: false,
+              // cpfShowContent: true,
               cnpjRemoveDom: false,
-              cnpjShowContent: false,
+              // cnpjShowContent: false,
             }));
             // router.push(
             //   "cnpj/?top=" + document.getElementsByTagName("body")[0].scrollTop
