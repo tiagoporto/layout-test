@@ -34,12 +34,6 @@ export const Home = () => {
   });
 
   // useEffect(() => {
-  //   const current = pathname === "/cnpj" ? "cnpj" : "cpf";
-
-  //   setActive(() => current);
-  // }, [pathname]);
-
-  // useEffect(() => {
   //   refCpf.current?.scrollTo({ top });
   //   refCnpj.current?.scrollTo({ top });
   // }, [top]);
@@ -70,14 +64,17 @@ export const Home = () => {
     //   refMain.current.style.pointerEvents = "auto";
     //   // refCpf.current.style.overflowY = "scroll";
     // }
-    //   setShowCNPJ(false);
-    setState((prevState) => ({
-      ...prevState,
-      // cpfShowContent: true,
-      // cnpjRemoveDom: true,
-    }));
 
-    router.push("/cpf");
+    requestAnimationFrame(() => {
+      // setState((prevState) => ({
+      //   ...prevState,
+      //   cpfShowContent: true,
+      //   cnpjRemoveDom: true,
+      //   cpfRemoveDom: false,
+      // }));
+
+      router.push("/cpf");
+    });
   };
 
   // const handleScrollCPF = () => {
@@ -104,14 +101,17 @@ export const Home = () => {
     //   refMain.current.style.pointerEvents = "auto";
     //   // refCnpj.current.style.overflowY = "scroll";
     // }
-    // setShowCPF(false);
-    // setShowCNPJ(true);
-    setState((prevState) => ({
-      ...prevState,
-      // cnpjShowContent: true,
-      cpfRemoveDom: true,
-    }));
-    router.push("/cnpj");
+
+    requestAnimationFrame(() => {
+      // setState((prevState) => ({
+      //   ...prevState,
+      //   cnpjShowContent: true,
+      //   cnpjRemoveDom: false,
+      //   cpfRemoveDom: true,
+      // }));
+
+      router.push("/cnpj");
+    });
   };
 
   // const handleScrollCNPJ = () => {
@@ -137,6 +137,7 @@ export const Home = () => {
               active: "cpf",
               cpfRemoveDom: false,
               cpfShowContent: false,
+              cnpjShowContent: false,
               cnpjRemoveDom: false,
             }));
 
@@ -157,6 +158,7 @@ export const Home = () => {
               ...prevState,
               active: "cnpj",
               cpfRemoveDom: false,
+              cpfShowContent: false,
               cnpjRemoveDom: false,
               cnpjShowContent: false,
             }));
